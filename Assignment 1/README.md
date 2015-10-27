@@ -1,6 +1,15 @@
 # CMPSC470 - Assignment 1
 Doug Fultz
 
+## How To
+
+### Requirements
+
+1. Sun Lab machine
+
+### Compile & Run buildParser
+
+`# g++ -o buildParser buildParser.cpp && ./buildParser`
 
 ## Assignment Description
 
