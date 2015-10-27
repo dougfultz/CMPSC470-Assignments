@@ -1,6 +1,9 @@
 # CMPSC470 - Assignment 1
 Doug Fultz
 
+
+## Assignment Description
+
 Write a C++/Java program that reads a CFG and an LL(1) parse table and automatically generates the corresponding recursive-descent parser in C++ code.
 
 ### Input:
