@@ -11,6 +11,10 @@ Doug Fultz
 
 `# g++ -o buildParser buildParser.cpp && ./buildParser`
 
+### Compile & Run buildParser with a *.cfg file
+
+`# g++ -o buildParser buildParser.cpp && ./buildParser ./FILE.cfg`
+
 ## Assignment Description
 
 Write a C++/Java program that reads a CFG and an LL(1) parse table and automatically generates the corresponding recursive-descent parser in C++ code.
