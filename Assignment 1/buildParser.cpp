@@ -8,6 +8,18 @@
 #include <fstream>
 
 using namespace std;
+//-------------------------------------------------------------------
+bool match(ifstream &ts, char token){
+    //From textbook, page 149
+    //Figure 5.5: Utility for matching tokens in an input stream.
+    if((char)ts.peek()==token){
+        ts.get();
+        return(true);
+    }else{
+        cerr<<"Expected token: "<<token<<endl;
+        return(false);
+    }
+}
 //===================================================================
 int main(int argc, char * argv[]){
     cout<<"Hello World"<<endl;
