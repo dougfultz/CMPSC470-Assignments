@@ -7,11 +7,19 @@ Doug Fultz
 
 1. Sun Lab machine
 
-### Compile & Run buildParser
+### Compile & Run buildParser.java
+
+`# javac buildParser.java && java buildParser`
+
+### Compile & Run buildParser.java with a *.cfg file
+
+`# javac buildParser.java && java buildParser ./FILE.cfg`
+
+### Compile & Run buildParser.cpp
 
 `# g++ -o buildParser buildParser.cpp && ./buildParser`
 
-### Compile & Run buildParser with a *.cfg file
+### Compile & Run buildParser.cpp with a *.cfg file
 
 `# g++ -o buildParser buildParser.cpp && ./buildParser ./FILE.cfg`
 
