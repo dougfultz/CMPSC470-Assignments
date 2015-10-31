@@ -15,26 +15,9 @@ class buildParser{
     private static HashMap nonTerminals = new HashMap();
     private static String[][] table;
     
-    /** MAIN function
-     *  Starts program
+    /** Parses input into class data structures.
      */
-    public static void main(String args[]) throws java.io.IOException {
-        //Check for correct number of parameters
-        if(args.length!=1){
-            System.err.println("Error: Input file must be named on command line.");
-            System.exit(-1);
-        }
-        
-        //Read entire file into inputString
-        try{
-            //http://abhinandanmk.blogspot.com/2012/05/java-how-to-read-complete-text-file.html
-            inputString = new Scanner(new File(args[0])).useDelimiter("\\A").next();
-            //System.out.println(inputString);
-        }catch(FileNotFoundException notFound){
-            System.err.println("Error: file not found: "+args[0]);
-            System.exit(-1);
-        }
-        
+    private static void parseCFG(){
         //Split inputString into sections
         sections=inputString.split(sectionDelim);
         
@@ -86,6 +69,30 @@ class buildParser{
             }
             System.out.print("\n");
         }*/
+    } //parseCFG
+    
+    /** MAIN function
+     *  Starts program
+     */
+    public static void main(String args[]) throws java.io.IOException {
+        //Check for correct number of parameters
+        if(args.length!=1){
+            System.err.println("Error: Input file must be named on command line.");
+            System.exit(-1);
+        }
+        
+        //Read entire file into inputString
+        try{
+            //http://abhinandanmk.blogspot.com/2012/05/java-how-to-read-complete-text-file.html
+            inputString = new Scanner(new File(args[0])).useDelimiter("\\A").next();
+            //System.out.println(inputString);
+        }catch(FileNotFoundException notFound){
+            System.err.println("Error: file not found: "+args[0]);
+            System.exit(-1);
+        }
+        
+        //Parse input
+        parseCFG();
         
     } //main()
 } //class buildParser
