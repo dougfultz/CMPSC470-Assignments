@@ -94,7 +94,9 @@ class buildParser{
         printToFile.println("class recDescent {");
         printToFile.println();
         printToFile.println("    private:");
-        printToFile.println("        void MATCH(ifstream &ts, char token){");
+        printToFile.println("        ifstream ts;");
+        printToFile.println();
+        printToFile.println("        void MATCH(char token){");
         printToFile.println("            //From textbook, page 149");
         printToFile.println("            //Figure 5.5: Utility for matching tokens in an input stream.");
         printToFile.println("            if((char)ts.peek()==token){");
@@ -157,7 +159,15 @@ class buildParser{
         //Build a procedure for each non-Terminal
         //http://java67.blogspot.com/2013/08/best-way-to-iterate-over-each-entry-in.html
         for(Map.Entry<String,Integer> entry : nonTerminals.entrySet()){
-            System.out.println("Key: "+entry.getKey()+" Value: "+entry.getValue());
+            //System.out.println("Key: "+entry.getKey()+" Value: "+entry.getValue());
+            printToFile.println("        void "+entry.getKey()+"(){");
+            //http://www.cplusplus.com/doc/tutorial/control/
+            printToFile.println("            switch((char)ts.peek()){");
+            //Create a case for each possible non-terminal
+            printToFile.println("                case 'T':");
+            printToFile.println("            }");
+            printToFile.println("        }");
+            printToFile.println();
         }
         
         //Place end of class structure
