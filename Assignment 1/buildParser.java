@@ -71,8 +71,8 @@ class buildParser{
                 table[i-2][j-1]=currentRow[j];
             }
         }
-        /*System.out.println(nonTerminals.toString());
-        for(int i=0;i<table.length; i++){
+        //System.out.println(nonTerminals.toString());
+        /*for(int i=0;i<table.length; i++){
             for(int j=0;j<table[i].length; j++){
                 System.out.print(table[i][j]+" ");
             }
@@ -153,6 +153,8 @@ class buildParser{
         
         //Place beginning of class structure
         recDescentHead();
+        
+        //Build a procedure for each non-Terminal
         
         //Place end of class structure
         recDescentTail();
