@@ -13,8 +13,8 @@ class buildParser{
     private static String[] sections;
     private static String[] rules;
     private static String[] rows;
-    private static HashMap Terminals = new HashMap();
-    private static HashMap nonTerminals = new HashMap();
+    private static HashMap<String,Integer> Terminals = new HashMap<String,Integer>();
+    private static HashMap<String,Integer> nonTerminals = new HashMap<String,Integer>();
     private static String[][] table;
     
     private static FileWriter outputFile;
@@ -155,6 +155,10 @@ class buildParser{
         recDescentHead();
         
         //Build a procedure for each non-Terminal
+        //http://java67.blogspot.com/2013/08/best-way-to-iterate-over-each-entry-in.html
+        for(Map.Entry<String,Integer> entry : nonTerminals.entrySet()){
+            System.out.println("Key: "+entry.getKey()+" Value: "+entry.getValue());
+        }
         
         //Place end of class structure
         recDescentTail();
