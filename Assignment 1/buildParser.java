@@ -80,14 +80,20 @@ class buildParser{
      *  Content will be printed as it appears to the output file
      */
     private static void recDescentHead(){
-        printToFile.println("head");
+        printToFile.println("#include <iostream>");
+        printToFile.println("using namespace std;");
+        printToFile.println();
+        printToFile.println("class recDescent {");
     }
     
     /** Writes the end of the class
      *  Content will be printed as it appears to the output file
      */
     private static void recDescentTail(){
-        printToFile.println("tail");
+        printToFile.println("};");
+        printToFile.println();
+        printToFile.println("int main() {");
+        printToFile.println("}");
     }
     
     /** MAIN function
