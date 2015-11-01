@@ -179,7 +179,23 @@ class buildParser{
                     String[] ruleSplit = ruleString.split("::=");
                     //Rule does not derive empty
                     if(ruleSplit.length==2){
-                        
+                        String[] ruleRHS = ruleSplit[1].split(" ");
+                        for(int i=0; i<ruleRHS.length; i++){
+                            //printToFile.println("//'"+ruleRHS[i]+"'");
+                            if(!ruleRHS[i].isEmpty()){
+                                //Check if token is a non-terminal
+                                if(nonTerminals.containsKey(ruleRHS[i])){
+                                    printToFile.println("                    "+entryNT.getKey()+"();");
+                                //Check if token is a terminal
+                                }else if(Terminals.containsKey(ruleRHS[i])){
+                                    printToFile.println("                    MATCH('"+entryT.getKey()+"');");
+                                //PROBLEM!!!
+                                }else{
+                                    System.err.println("Error: symbol is neither a terminal or nonterminal: "+ruleRHS[i]);
+                                    System.exit(-1);
+                                }
+                            }
+                        }
                     //Rule derives empty
                     }else if(ruleSplit.length==1){
                         //do nothing
