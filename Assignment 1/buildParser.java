@@ -167,8 +167,30 @@ class buildParser{
             for(Map.Entry<String,Integer> entryT : Terminals.entrySet()){
                 printToFile.println("                case '"+entryT.getKey()+"':");
                 //Determine rule to useDelimiter
-                String ruleNum = new String(table[nonTerminals.get(entryNT.getKey())][Terminals.get(entryT.getKey())]);
+                Integer ruleNum = Integer.parseInt(table[nonTerminals.get(entryNT.getKey())][Terminals.get(entryT.getKey())]);
                 printToFile.println("                    //RULE: "+ruleNum);
+                //If rule is 0, error
+                if(ruleNum==0){
+                    printToFile.println("                    cerr<<\"Does not match to a rule\"<<endl;");
+                }else{
+                    //Need to look at rule
+                    String ruleString = new String(rules[ruleNum-1]);
+                    printToFile.println("                    //"+ruleString);
+                    String[] ruleSplit = ruleString.split("::=");
+                    //Rule does not derive empty
+                    if(ruleSplit.length==2){
+                        
+                    //Rule derives empty
+                    }else if(ruleSplit.length==1){
+                        //do nothing
+                        printToFile.println("                    return;");
+                    //Rule has extra separater
+                    }else{
+                        System.err.println("Rule "+ruleNum+" has extra RHS");
+                        System.exit(-1);
+                    }
+                    
+                }
                 printToFile.println("                    break;");
             }
             printToFile.println("            }");
