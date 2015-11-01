@@ -80,10 +80,27 @@ class buildParser{
      *  Content will be printed as it appears to the output file
      */
     private static void recDescentHead(){
+        printToFile.println("// Generated recDescent");
+        printToFile.println();
         printToFile.println("#include <iostream>");
+        printToFile.println("#include <fstream>");
+        printToFile.println();
         printToFile.println("using namespace std;");
         printToFile.println();
         printToFile.println("class recDescent {");
+        printToFile.println();
+        printToFile.println("    private:");
+        printToFile.println("        void MATCH(ifstream &ts, char token){");
+        printToFile.println("            //From textbook, page 149");
+        printToFile.println("            //Figure 5.5: Utility for matching tokens in an input stream.");
+        printToFile.println("            if((char)ts.peek()==token){");
+        printToFile.println("                ts.get();");
+        printToFile.println("            }else{");
+        printToFile.println("                //ERROR(token);");
+        printToFile.println("                cerr<<\"Expected: \"+token<<endl;");
+        printToFile.println("            }");
+        printToFile.println("        }");
+        printToFile.println();
     }
     
     /** Writes the end of the class
