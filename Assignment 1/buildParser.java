@@ -6,6 +6,8 @@ import java.util.*;
  */
 class buildParser{
     private static final String sectionDelim="%%";
+    private static final String outputFilePath="./recDescent.cpp";
+    private static final boolean appendToFile=false;
     
     private static String inputString;
     private static String[] sections;
@@ -14,6 +16,9 @@ class buildParser{
     private static HashMap Terminals = new HashMap();
     private static HashMap nonTerminals = new HashMap();
     private static String[][] table;
+    
+    private static FileWriter outputFile;
+    private static PrintWriter printToFile;
     
     /** Parses input into class data structures.
      */
@@ -71,6 +76,20 @@ class buildParser{
         }*/
     } //parseCFG
     
+    /** Writes the beginning of the class
+     *  Content will be printed as it appears to the output file
+     */
+    private static void recDescentHead(){
+        printToFile.println("head");
+    }
+    
+    /** Writes the end of the class
+     *  Content will be printed as it appears to the output file
+     */
+    private static void recDescentTail(){
+        printToFile.println("tail");
+    }
+    
     /** MAIN function
      *  Starts program
      */
@@ -93,6 +112,26 @@ class buildParser{
         
         //Parse input
         parseCFG();
+        
+        //Prepare output file
+        try{
+            //http://www.homeandlearn.co.uk/java/write_to_textfile.html
+            outputFile = new FileWriter(outputFilePath);
+            //outputFile = new FileWriter(outputFilePath,appendToFile);
+            printToFile = new PrintWriter(outputFile);
+        }catch(IOException e){
+            System.err.println("Error: unable to open file for output: "+outputFilePath);
+            System.exit(-1);
+        }
+        
+        //Place beginning of class structure
+        recDescentHead();
+        
+        //Place end of class structure
+        recDescentTail();
+        
+        //Always close the file
+        printToFile.close();
         
     } //main()
 } //class buildParser
