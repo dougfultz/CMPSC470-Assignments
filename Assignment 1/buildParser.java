@@ -158,13 +158,19 @@ class buildParser{
         
         //Build a procedure for each non-Terminal
         //http://java67.blogspot.com/2013/08/best-way-to-iterate-over-each-entry-in.html
-        for(Map.Entry<String,Integer> entry : nonTerminals.entrySet()){
+        for(Map.Entry<String,Integer> entryNT : nonTerminals.entrySet()){
             //System.out.println("Key: "+entry.getKey()+" Value: "+entry.getValue());
-            printToFile.println("        void "+entry.getKey()+"(){");
+            printToFile.println("        void "+entryNT.getKey()+"(){");
             //http://www.cplusplus.com/doc/tutorial/control/
             printToFile.println("            switch((char)ts.peek()){");
             //Create a case for each possible non-terminal
-            printToFile.println("                case 'T':");
+            for(Map.Entry<String,Integer> entryT : Terminals.entrySet()){
+                printToFile.println("                case '"+entryT.getKey()+"':");
+                //Determine rule to useDelimiter
+                String ruleNum = new String(table[nonTerminals.get(entryNT.getKey())][Terminals.get(entryT.getKey())]);
+                printToFile.println("                    //RULE: "+ruleNum);
+                printToFile.println("                    break;");
+            }
             printToFile.println("            }");
             printToFile.println("        }");
             printToFile.println();
