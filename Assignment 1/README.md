@@ -15,6 +15,10 @@ Doug Fultz
 
 `# javac buildParser.java && java buildParser ./FILE.cfg`
 
+### Compile & Run buildParser.java with a *.cfg file and print output class
+
+`# javac buildParser.java && java buildParser ./FILE.cfg && cat recDescent.cpp`
+
 ### Compile & Run buildParser.cpp
 
 `# g++ -o buildParser buildParser.cpp && ./buildParser`
