@@ -29,6 +29,10 @@ class buildParser{
         //Split CFG into rules
         rules=sections[0].split("\n");
         
+        /*for(int i=0; i<rules.length; i++){
+            System.out.println(i+" '"+rules[i]+"'");
+        }*/
+        
         //Split table into rows
         rows=sections[1].split("\n");
         
