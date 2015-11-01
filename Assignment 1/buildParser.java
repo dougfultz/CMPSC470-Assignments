@@ -88,6 +88,7 @@ class buildParser{
         printToFile.println();
         printToFile.println("#include <iostream>");
         printToFile.println("#include <fstream>");
+        printToFile.println("#include <string>");
         printToFile.println();
         printToFile.println("using namespace std;");
         printToFile.println();
@@ -113,6 +114,18 @@ class buildParser{
      *  Content will be printed as it appears to the output file
      */
     private static void recDescentTail(){
+        printToFile.println("    public:");
+        printToFile.println("        bool parse(string inputFilePath){");
+        printToFile.println("            ts.open(inputFilePath.c_str());");
+        printToFile.println("            if(!ts.is_open()){");
+        printToFile.println("                cerr<<\"Could not open file: \"<<inputFilePath<<endl;");
+        printToFile.println("                return(false);");
+        printToFile.println("            }else{");
+        printToFile.println("                //Parse input file");
+        printToFile.println("            }");
+        printToFile.println();
+        printToFile.println();
+        printToFile.println("        }");
         printToFile.println("};");
         printToFile.println();
         printToFile.println("int main() {");
