@@ -127,15 +127,18 @@ class buildParser{
         String[] ruleSplit = ruleString.split("::=");
         printToFile.println("                "+ruleSplit[0].trim()+"();");
         printToFile.println();
+        //printToFile.println("                cout<<\"Next char '\"<<ts.peek()<<\"'\"<<endl;");
+        printToFile.println("                ts.peek();");
+        printToFile.println();
         printToFile.println("                if(ts.eof()){");
         printToFile.println("                    return(true);");
         printToFile.println("                }else{");
         printToFile.println("                    //http://www.cplusplus.com/reference/ios/ios/eof/");
         printToFile.println("                    char c;");
-        printToFile.println("                    cout<<\"Remaining tokens:\"<<endl;");
+        printToFile.println("                    cout<<\"Remaining tokens:\"<<endl<<\"'\";");
         printToFile.println("                    while(ts.get(c))");
         printToFile.println("                        cout<<c;");
-        printToFile.println("                    cout<<endl;");
+        printToFile.println("                    cout<<\"'\"<<endl;");
         printToFile.println("                    return(false);");
         printToFile.println("                }");
         printToFile.println();
@@ -226,7 +229,7 @@ class buildParser{
                     if(ruleSplit.length==2){
                         String[] ruleRHS = ruleSplit[1].split(" ");
                         for(int i=0; i<ruleRHS.length; i++){
-                            //printToFile.println("//'"+ruleRHS[i]+"'");
+                            printToFile.println("//'"+ruleRHS[i]+"'");
                             if(!ruleRHS[i].isEmpty()){
                                 //Check if token is a non-terminal
                                 if(nonTerminals.containsKey(ruleRHS[i])){
@@ -234,7 +237,7 @@ class buildParser{
                                     //printToFile.println("                    "+entryNT.getKey()+"();");
                                 //Check if token is a terminal
                                 }else if(Terminals.containsKey(ruleRHS[i])){
-                                    printToFile.println("                    MATCH('"+entryT.getKey()+"');");
+                                    printToFile.println("                    MATCH('"+ruleRHS[i]+"');");
                                 //PROBLEM!!!
                                 }else{
                                     System.err.println("Error: symbol is neither a terminal or nonterminal: "+ruleRHS[i]);
