@@ -229,7 +229,7 @@ class buildParser{
                     if(ruleSplit.length==2){
                         String[] ruleRHS = ruleSplit[1].split(" ");
                         for(int i=0; i<ruleRHS.length; i++){
-                            printToFile.println("//'"+ruleRHS[i]+"'");
+                            //printToFile.println("//'"+ruleRHS[i]+"'");
                             if(!ruleRHS[i].isEmpty()){
                                 //Check if token is a non-terminal
                                 if(nonTerminals.containsKey(ruleRHS[i])){
