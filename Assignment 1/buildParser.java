@@ -128,7 +128,24 @@ class buildParser{
         printToFile.println("        }");
         printToFile.println("};");
         printToFile.println();
-        printToFile.println("int main() {");
+        printToFile.println("int main(int argc, char * argv[]) {");
+        printToFile.println("    //Accept file as only argument.");
+        printToFile.println("    //http://www.cprogramming.com/tutorial/lesson14.html");
+        printToFile.println("    //http://www.cplusplus.com/articles/DEN36Up4/");
+        printToFile.println("    if(argc!=2){");
+        printToFile.println("        cerr<<\"Usage: \"<<argv[0]<<\" FILE\"<<endl;");
+        printToFile.println("        cerr<<endl;");
+        printToFile.println("        cerr<<\"    FILE - Path to file containing tokens\"<<endl;");
+        printToFile.println("        return(1);");
+        printToFile.println("    }else{");
+        printToFile.println("        recDescent cfg;");
+        printToFile.println("        cout<<\"Starting to parse \"<<argv[1]<<endl<<endl;");
+        printToFile.println("        if(cfg.parse(argv[1])){");
+        printToFile.println("            cout<<\"ACCEPT\"<<endl;");
+        printToFile.println("        }else{");
+        printToFile.println("            cout<<\"REJECT\"<<endl;");
+        printToFile.println("        }");
+        printToFile.println("    }");
         printToFile.println("}");
     }
     
