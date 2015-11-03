@@ -19,13 +19,9 @@ Doug Fultz
 
 `# javac buildParser.java && java buildParser ./FILE.cfg && cat recDescent.cpp`
 
-### Compile & Run buildParser.cpp
+### Compile and Run everything with token file
 
-`# g++ -o buildParser buildParser.cpp && ./buildParser`
-
-### Compile & Run buildParser.cpp with a *.cfg file
-
-`# g++ -o buildParser buildParser.cpp && ./buildParser ./FILE.cfg`
+`javac -Xlint buildParser.java && java buildParser ./input1.cfg && cat recDescent.cpp && g++ -o recDescent recDescent.cpp && ./recDescent input1.tokens`
 
 ## Assignment Description
 
