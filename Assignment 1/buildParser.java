@@ -122,9 +122,24 @@ class buildParser{
         printToFile.println("                return(false);");
         printToFile.println("            }else{");
         printToFile.println("                //Parse input file");
+        printToFile.println("                //return(true);");
+        String ruleString = new String(rules[0]);
+        String[] ruleSplit = ruleString.split("::=");
+        printToFile.println("                "+ruleSplit[0].trim()+"();");
+        printToFile.println();
+        printToFile.println("                if(ts.eof()){");
+        printToFile.println("                    return(true);");
+        printToFile.println("                }else{");
+        printToFile.println("                    //http://www.cplusplus.com/reference/ios/ios/eof/");
+        printToFile.println("                    char c;");
+        printToFile.println("                    cout<<\"Remaining tokens:\"<<endl;");
+        printToFile.println("                    while(ts.get(c))");
+        printToFile.println("                        cout<<c;");
+        printToFile.println("                    cout<<endl;");
+        printToFile.println("                    return(false);");
+        printToFile.println("                }");
+        printToFile.println();
         printToFile.println("            }");
-        printToFile.println();
-        printToFile.println();
         printToFile.println("        }");
         printToFile.println("};");
         printToFile.println();
@@ -139,7 +154,7 @@ class buildParser{
         printToFile.println("        return(1);");
         printToFile.println("    }else{");
         printToFile.println("        recDescent cfg;");
-        printToFile.println("        cout<<\"Starting to parse \"<<argv[1]<<endl<<endl;");
+        printToFile.println("        cout<<\"Starting to parse \"<<argv[1]<<endl;");
         printToFile.println("        if(cfg.parse(argv[1])){");
         printToFile.println("            cout<<\"ACCEPT\"<<endl;");
         printToFile.println("        }else{");
@@ -215,7 +230,8 @@ class buildParser{
                             if(!ruleRHS[i].isEmpty()){
                                 //Check if token is a non-terminal
                                 if(nonTerminals.containsKey(ruleRHS[i])){
-                                    printToFile.println("                    "+entryNT.getKey()+"();");
+                                    printToFile.println("                    "+ruleRHS[i]+"();");
+                                    //printToFile.println("                    "+entryNT.getKey()+"();");
                                 //Check if token is a terminal
                                 }else if(Terminals.containsKey(ruleRHS[i])){
                                     printToFile.println("                    MATCH('"+entryT.getKey()+"');");
@@ -229,7 +245,7 @@ class buildParser{
                     //Rule derives empty
                     }else if(ruleSplit.length==1){
                         //do nothing
-                        printToFile.println("                    return;");
+                        //printToFile.println("                    return;");
                     //Rule has extra separater
                     }else{
                         System.err.println("Rule "+ruleNum+" has extra RHS");
@@ -240,6 +256,7 @@ class buildParser{
                 printToFile.println("                    break;");
             }
             printToFile.println("            }");
+            //printToFile.println("            return;");
             printToFile.println("        }");
             printToFile.println();
         }
