@@ -14,7 +14,7 @@ class codegenerator{
     /** MAIN function
      *  Starts program
      */
-    public static void main(String args[]){
+    public static void main(String args[]) throws java.io.IOException {
         //Prepare output file
         try{
             //http://www.homeandlearn.co.uk/java/write_to_textfile.html
