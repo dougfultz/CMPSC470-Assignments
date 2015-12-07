@@ -1,12 +1,18 @@
 import java.io.*;
 import java.util.*;
+import java.lang.*;
 
 /** codegenerator.java
  *  @author Doug Fultz
  */
 class codegenerator{
     private static String enterScore = "Enter score: ";
+    private static String endOfInput = "-9";
+    
+    private static Vector<Double> scores = new Vector<Double>();
+    
     private static String strNoScore = "ERROR: no score provided.";
+    private static String strNotAScore = "ERROR: input is not a number.";
     
     private static final String jasminJarPath="./jasmin.jar";
     private static final String outputFilePath="./simple.j";
@@ -44,17 +50,37 @@ class codegenerator{
         }
         
         String input;
+        Double dblInput;
+        
         //https://docs.oracle.com/javase/tutorial/java/nutsandbolts/while.html
         do{
             //Read input from user
             input = c.readLine(enterScore);
             
-            //Check if input is empty
-            if(input.isEmpty()){
-                System.out.println(strNoScore);
-                continue;
+            //Check if not end of input
+            if(!input.equals(endOfInput)){
+                
+                //Check if input is empty
+                if(input.isEmpty()){
+                    System.out.println(strNoScore);
+                    continue;
+                }
+                
+                //Check if input parses to a double
+                try{
+                    dblInput=new Double(input);
+                    
+                    //Add score to vector
+                    scores.add(dblInput);
+                    
+                }catch(NumberFormatException e){
+                    System.out.println(strNotAScore);
+                    continue;
+                }
             }
-        }while(!input.equals("-9"));
+        }while(!input.equals(endOfInput));
+        
+        System.out.println();
     }
     
     /** MAIN function
@@ -63,11 +89,15 @@ class codegenerator{
     public static void main(String args[]) throws java.io.IOException {
         //Output instructions to user
         System.out.println("Enter test scores one at a time.");
-        System.out.println("Score of \"-9\" is end of input.");
+        System.out.println("Score of \""+endOfInput+"\" is end of input.");
         System.out.println();
         
         //Read scores
         readScores();
+        
+        //Output vector
+        System.out.println("Scores entered:");
+        System.out.println(scores.toString());
         
         //Prepare output file
         try{
