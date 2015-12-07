@@ -12,3 +12,7 @@ Doug Fultz
 1. Compile java file
 
    `# javac codegenerator.java`
+
+2. Execute codegenerator
+
+   `# java codegenerator`
