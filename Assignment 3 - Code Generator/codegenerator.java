@@ -62,8 +62,8 @@ class codegenerator{
         printToFile.println("    istore_1");
         
         //Store current sum
-        //printToFile.println("    ldc2_w 0");
-        //printToFile.println("    dstore_2");
+        printToFile.println("    ldc2_w 0.0");
+        printToFile.println("    dstore_2");
         
         //loop through test scores to calculate sum
         //printToFile.println("    loop:");
