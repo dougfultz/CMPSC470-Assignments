@@ -33,9 +33,59 @@ class codegenerator{
         printToFile.println("    invokespecial java/lang/Object/<init>()V");
         printToFile.println("    return");
         printToFile.println(".end method");
-        printToFile.println();
-        printToFile.println();
-        printToFile.println();
+        //printToFile.println();
+    }
+    
+    /** Writes main jasmin function
+     */
+    private static void outputMain(){
+        //Function signature
+        printToFile.println(".method public static main([Ljava/lang/String;)V");
+        printToFile.println("    .limit stack 4");
+        printToFile.println("    .limit locals 4");
+        
+        //Create local array for scores
+        printToFile.println("    ldc "+scores.size());
+        printToFile.println("    newarray double");
+        printToFile.println("    astore_0");
+        
+        //Store scores in a local array
+        //for(int i=0; i<scores.size();i++){
+            //printToFile.println("        aload_0");
+            //printToFile.println("        ldc "+i);
+            //printToFile.println("        ldc2_w "+scores.get(i));
+            //printToFile.println("        dastore");
+        //}
+        
+        //Store current location
+        //printToFile.println("    ldc 0");
+        //printToFile.println("    istore_1");
+        
+        //Store current sum
+        //printToFile.println("    ldc2_w 0");
+        //printToFile.println("    dstore_2");
+        
+        //loop through test scores to calculate sum
+        //printToFile.println("    loop:");
+        //printToFile.println("        aload_0");     //Load array reference
+        //printToFile.println("        iload_1");     //Load current Location
+        //printToFile.println("        daload");      //Get value
+        
+        //Add value to sum
+        //printToFile.println("        dload_2");     //Load current sum
+        //printToFile.println("        dadd");        //Add values
+        //printToFile.println("        dstore_2");    //Store new sum
+        
+        //Increment current location
+        
+        //TODO - divide sum by number of scores
+        //TODO - output average
+        //printToFile.println("    iload_0");
+        //printToFile.println("");
+        //printToFile.println("    invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V");
+        
+        printToFile.println("    return");
+        printToFile.println(".end method");
     }
     
     /** Reads test scores provided by user from console
@@ -111,6 +161,9 @@ class codegenerator{
         
         //Place beginning of class structure
         outputHead();
+        
+        //Place main jasmin function
+        outputMain();
         
         //Final newline
         printToFile.println();
