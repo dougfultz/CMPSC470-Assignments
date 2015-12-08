@@ -83,20 +83,18 @@ class codegenerator{
         printToFile.println("        iload_1");         //Load current Location
         printToFile.println("        if_icmpgt loop");  //if length > location, loop
         
+        //Prepare for output
+        printToFile.println("    getstatic java/lang/System/out Ljava/io/PrintStream;");
+        
         //Calculate average
-        printToFile.println("    new java/lang/String");        //Create a new string object
         printToFile.println("    dload_2");                     //Load current sum
         printToFile.println("    aload_0");                     //Load array reference
         printToFile.println("    arraylength");                 //length of array
         printToFile.println("    i2d");                         //convert to double
         printToFile.println("    ddiv");                        //divide
         
-        //TODO - divide sum by number of scores
-        //TODO - output average
-        //printToFile.println("    iload_0");
-        //printToFile.println("");
-        //printToFile.println("    invokevirtual java/lang/String/String(Ljava/lang/String;)Ljava/lang/String");
-        //printToFile.println("    invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V");
+        //output average
+        printToFile.println("invokevirtual java/io/PrintStream/println(D)V");
         
         printToFile.println("    return");
         printToFile.println(".end method");
