@@ -58,8 +58,8 @@ class codegenerator{
         }
         
         //Store current location
-        //printToFile.println("    ldc 0");
-        //printToFile.println("    istore_1");
+        printToFile.println("    ldc 0");
+        printToFile.println("    istore_1");
         
         //Store current sum
         //printToFile.println("    ldc2_w 0");
