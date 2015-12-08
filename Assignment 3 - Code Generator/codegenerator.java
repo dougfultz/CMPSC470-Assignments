@@ -50,12 +50,12 @@ class codegenerator{
         printToFile.println("    astore_0");
         
         //Store scores in a local array
-        //for(int i=0; i<scores.size();i++){
-            //printToFile.println("        aload_0");
-            //printToFile.println("        ldc "+i);
-            //printToFile.println("        ldc2_w "+scores.get(i));
-            //printToFile.println("        dastore");
-        //}
+        for(int i=0; i<scores.size();i++){
+            printToFile.println("        aload_0");
+            printToFile.println("        ldc "+i);
+            printToFile.println("        ldc2_w "+scores.get(i));
+            printToFile.println("        dastore");
+        }
         
         //Store current location
         //printToFile.println("    ldc 0");
