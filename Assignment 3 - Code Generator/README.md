@@ -16,3 +16,11 @@ Doug Fultz
 2. Execute codegenerator
 
    `# java codegenerator`
+
+3. Show generated jasmin file
+
+   `# cat simple.j`
+
+4. Execute jasmin program
+
+   `# java simple`
