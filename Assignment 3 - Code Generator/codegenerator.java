@@ -67,14 +67,14 @@ class codegenerator{
         
         //loop through test scores to calculate sum
         printToFile.println("    loop:");
-        //printToFile.println("        aload_0");     //Load array reference
-        //printToFile.println("        iload_1");     //Load current Location
-        //printToFile.println("        daload");      //Get value
+        printToFile.println("        aload_0");     //Load array reference
+        printToFile.println("        iload_1");     //Load current Location
+        printToFile.println("        daload");      //Get value
         
         //Add value to sum
-        //printToFile.println("        dload_2");     //Load current sum
-        //printToFile.println("        dadd");        //Add values
-        //printToFile.println("        dstore_2");    //Store new sum
+        printToFile.println("        dload_2");     //Load current sum
+        printToFile.println("        dadd");        //Add values
+        printToFile.println("        dstore_2");    //Store new sum
         
         //Increment current location
         printToFile.println("        iinc 1 1");        //Increment current location
