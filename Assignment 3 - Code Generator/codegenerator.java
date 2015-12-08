@@ -66,7 +66,7 @@ class codegenerator{
         printToFile.println("    dstore_2");
         
         //loop through test scores to calculate sum
-        //printToFile.println("    loop:");
+        printToFile.println("    loop:");
         //printToFile.println("        aload_0");     //Load array reference
         //printToFile.println("        iload_1");     //Load current Location
         //printToFile.println("        daload");      //Get value
@@ -77,6 +77,11 @@ class codegenerator{
         //printToFile.println("        dstore_2");    //Store new sum
         
         //Increment current location
+        printToFile.println("        iinc 1 1");        //Increment current location
+        printToFile.println("        aload_0");         //Load array reference
+        printToFile.println("        arraylength");     //length of array
+        printToFile.println("        iload_1");         //Load current Location
+        printToFile.println("        if_icmpgt loop");  //if length > location, loop
         
         //TODO - divide sum by number of scores
         //TODO - output average
